@@ -2,10 +2,6 @@ import os
 import inspect
 import numpy as np
 import datetime
-from antares.api.Base import Base
-from antares.api.Zone import Zone
-from antares.api.Instant import Instant
-from antares.treatment.Treatment import Treatment
 
 
 class MyProf():
@@ -81,7 +77,15 @@ class MyProf():
     def plot(self, x='points', y='time'):
         """
         Function to plot profiling information stored at each control point.
+
+        .. warning::
+           It uses Antares API and plot treatment.
         """
+        from antares.api.Base import Base
+        from antares.api.Zone import Zone
+        from antares.api.Instant import Instant
+        from antares.treatment.Treatment import Treatment
+
         b = Base()
         b['0'] = Zone()
         b[0]['0'] = Instant()
