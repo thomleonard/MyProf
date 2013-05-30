@@ -2,7 +2,7 @@ import os
 import subprocess
 
 __all__ = []
-VERSION = '0.0.0'
+VERSION = '0.1'
 
 MyProf_file = __import__('MyProf', globals(), locals(), ['MyProf'])
 MyProf = MyProf_file.MyProf
@@ -21,7 +21,7 @@ try:
     if not __version__:
         __version__ = VERSION
     else:
-        __version__ = __version__.replace('1.0.0', VERSION)
+        __version__ = __version__.replace('0.0', VERSION)
     del CMD, FNULL, GIT_PROCESS
 except OSError:
     __version__ = VERSION
