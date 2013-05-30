@@ -14,5 +14,6 @@ print myprof
 
 myprof.plot()
 myprof.plot(y='memory')
+myprof.plot(y='memory_evolution')
 myprof.plot(x='time', y='memory')
  

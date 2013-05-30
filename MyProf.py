@@ -91,6 +91,8 @@ class MyProf():
         b[0]['0'] = Instant()
         b[0][0]['time'] = [(dt - self.time[0]).total_seconds() for dt in self.time]
         b[0][0]['memory'] = np.array(self.memory)  # - self.memory[0]
+        b[0][0]['memory_evolution'] = np.zeros(len(self.time))
+        b[0][0]['memory_evolution'][1:] = np.diff(b[0][0]['memory'])
         b[0][0]['points'] = np.arange(len(self.time))
 
         t = Treatment('plot')
