@@ -13,7 +13,14 @@ for i in range(5):
 print myprof
 
 myprof.plot()
+raw_input()
+
 myprof.plot(y='memory')
+raw_input()
+
 myprof.plot(y='memory_evolution')
+raw_input()
+
 myprof.plot(x='time', y='memory')
+raw_input()
  

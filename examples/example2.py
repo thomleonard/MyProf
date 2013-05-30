@@ -11,6 +11,10 @@ myprof.point()
 print myprof
 
 myprof.plot()
-myprof.plot(y='memory')
-myprof.plot(x='time', y='memory')
+raw_input()
 
+myprof.plot(y='memory')
+raw_input()
+
+myprof.plot(x='time', y='memory')
+raw_input()
