@@ -86,10 +86,12 @@ class MyProf():
         from antares.api.Instant import Instant
         from antares.treatment.Treatment import Treatment
 
+        timedelta = [dt - self.time[0] for dt in self.time]
+
         b = Base()
         b['0'] = Zone()
         b[0]['0'] = Instant()
-        b[0][0]['time'] = [(dt - self.time[0]).total_seconds() for dt in self.time]
+        b[0][0]['time'] = [dt.seconds + dt.microseconds / 1000000. for dt in timedelta]
         b[0][0]['memory'] = np.array(self.memory)  # - self.memory[0]
         b[0][0]['memory_evolution'] = np.zeros(len(self.time))
         b[0][0]['memory_evolution'][1:] = np.diff(b[0][0]['memory'])
