@@ -38,8 +38,8 @@ class MyProf:
         callerframerecord = inspect.stack()[2]
         frame = callerframerecord[0]
         info = inspect.getframeinfo(frame)
-        fname = info.filename
-        line = info.lineno
+        fname = info[0]
+        line = info[1]
         return fname, line
 
     def get_memory(self):
