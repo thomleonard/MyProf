@@ -4,7 +4,7 @@ import numpy as np
 import datetime
 
 
-class MyProf():
+class MyProf:
     """
     My memory and time profiler
     """
