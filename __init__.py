@@ -2,7 +2,7 @@ import os
 import subprocess
 
 __all__ = []
-VERSION = '0.1'
+VERSION = '0.2'
 
 MyProf_file = __import__('MyProf', globals(), locals(), ['MyProf'])
 MyProf = MyProf_file.MyProf
