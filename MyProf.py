@@ -13,6 +13,7 @@ class MyProf:
         self.time = []
         self.memory = []
         self.location = []
+        self.show = False
 
     def point(self, location=None):
         """
@@ -30,6 +31,12 @@ class MyProf:
             self.location.append('%s : %s' % (fname, line))
         mem = self.get_memory()
         self.memory.append(mem)
+        if self.show:
+            output = '%s %s  %sMb  %s' % (str(len(self.location) - 1).ljust(3),
+                                          str(self.time[-1] - self.time[0]).ljust(14),
+                                          ('%.2f' % self.memory[-1]).rjust(6),
+                                          self.location[-1])
+            print '\033[92m' + output + '\033[0m'
 
     def get_location(self):
         """
@@ -65,7 +72,7 @@ class MyProf:
         tim_max = max(map(len, time))
         pnt_max = max(5, len(str(len(time))))
 
-        output = '%s   %s  %s  %s\n' % ('Point'.ljust(pnt_max), 'Time'.ljust(tim_max - 2), 'Mem (Mb)'.rjust(mem_max + 2), 'Location')
+        output = '\n%s   %s  %s  %s\n' % ('Point'.ljust(pnt_max), 'Time'.ljust(tim_max - 2), 'Mem (Mb)'.rjust(mem_max + 2), 'Location')
         output += '=' * len(output) + '\n'
         for idx, loc in enumerate(self.location):
             output += '%s %s  %sMb  %s\n' % (str(idx).ljust(pnt_max), time[idx].ljust(tim_max), memory[idx].rjust(mem_max), loc)
