@@ -2,6 +2,7 @@ import os
 import inspect
 import numpy as np
 import datetime
+import sys
 
 
 class MyProf:
@@ -53,7 +54,13 @@ class MyProf:
         """
         Function to get the memory used by the process
         """
-        return int(os.popen('ps -p %d -o rss | tail -1' % os.getpid()).read()) / 1000.
+        if sys.platform[:3] == 'win': # windows
+            output = os.popen('tasklist /FI "PID eq %d" /FO LIST' % os.getpid()).read()
+            mem_usage = [l for l in output.split('\n') if 'Mem Usage' in l]
+            return int(mem_usage[0].split()[2].split(',')[0]) / 1000.
+        else:
+            return int(os.popen('ps -p %d -o rss | tail -1' % os.getpid()).read()) / 1000.
+        
 
     def get_time(self):
         """
